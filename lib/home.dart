@@ -74,14 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return Umbrella(search: _editingController.text);
+                  return Umbrella(search: _editingController.text, title: widget.title,);
                 },
               ),
             );
           }
         },
         child: Icon(Icons.arrow_forward),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

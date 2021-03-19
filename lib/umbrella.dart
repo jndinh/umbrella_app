@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Umbrella extends StatefulWidget {
-  Umbrella({Key key, this.search}) : super(key: key);
+  Umbrella({Key key, this.search, this.title}) : super(key: key);
   final String search;
+  final String title;
 
   @override
   _UmbrellaState createState() => _UmbrellaState();
@@ -15,7 +16,7 @@ class _UmbrellaState extends State<Umbrella> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Do I need an umbrella today?'),
+        title: Text(widget.title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -28,26 +29,43 @@ class _UmbrellaState extends State<Umbrella> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var data = snapshot.data;
-            if (data == null) return Container();
-
-            print(data);
-            var weatherStateName = data['consolidated_weather']
-                .first['weather_state_name']
-                .toLowerCase();
-            if (weatherStateName.contains('rain') ||
-                weatherStateName.contains('storm') ||
-                weatherStateName.contains('showers') ||
-                weatherStateName.contains('sleet')) {
-              return Text('yes');
-            } else {
-              return Text('no');
+            if (data == null || data['consolidated_weather'].isEmpty) return Container();
+            var weatherStateAbbr =
+                data['consolidated_weather'].first['weather_state_abbr'];
+            var umbrella = 'No';
+            // check if the weather is wet
+            if (['sl', 'hail', 't', 'hr', 'lr', 's']
+                .contains(weatherStateAbbr)) {
+              umbrella = 'Yes';
             }
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                      umbrella == 'Yes'
+                          ? Icons.umbrella_rounded
+                          : Icons.wb_sunny,
+                      size: 50.0),
+                  Text(
+                    umbrella,
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                ],
+              ),
+            );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("Error: ${snapshot.error}");
           }
-
           // By default, show a loading spinner.
-          return CircularProgressIndicator();
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+              ],
+            ),
+          );
         },
       ),
     );
