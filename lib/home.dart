@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        tooltip: 'Increment',
+        tooltip: 'Search',
         onPressed: () {
           if (_formKey.currentState.validate()) {
             // do something
