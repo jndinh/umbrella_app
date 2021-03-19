@@ -1,6 +1,6 @@
 # umbrella_app
 
-A new Flutter project.
+Using this free API: https://www.metaweather.com/api/
 
 ## Getting Started
 
