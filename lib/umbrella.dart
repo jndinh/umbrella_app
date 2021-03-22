@@ -34,7 +34,7 @@ class _UmbrellaState extends State<Umbrella> {
                 data['consolidated_weather'].first['weather_state_abbr'];
             var umbrella = 'No';
             // check if the weather is wet
-            if (['sl', 'hail', 't', 'hr', 'lr', 's']
+            if (['sl', 'h', 't', 'hr', 'lr', 's']
                 .contains(weatherStateAbbr)) {
               umbrella = 'Yes';
             }
