@@ -29,13 +29,14 @@ class _UmbrellaState extends State<Umbrella> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var data = snapshot.data;
-            if (data == null || data['consolidated_weather'].isEmpty) return Container();
+            if (data == null || data['consolidated_weather'].isEmpty) {
+              return Text("Couldn't find location data");
+            }
             var weatherStateAbbr =
                 data['consolidated_weather'].first['weather_state_abbr'];
             var umbrella = 'No';
             // check if the weather is wet
-            if (['sl', 'h', 't', 'hr', 'lr', 's']
-                .contains(weatherStateAbbr)) {
+            if (['sl', 'h', 't', 'hr', 'lr', 's'].contains(weatherStateAbbr)) {
               umbrella = 'Yes';
             }
             return Center(
@@ -54,6 +55,9 @@ class _UmbrellaState extends State<Umbrella> {
                 ],
               ),
             );
+          } else if (snapshot.connectionState == ConnectionState.done &&
+              snapshot.data == null) {
+            return Text("Couldn't find location data");
           } else if (snapshot.hasError) {
             return Text("Error: ${snapshot.error}");
           }
