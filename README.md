@@ -1,6 +1,12 @@
 # umbrella_app
 
-Using this free API: https://www.metaweather.com/api/
+The purpose of this app is to answer the question "Do I need an umbrella today?" by asking the user to input their location and generating a simple yes/no text back with grapshics. 
+
+## Skills Demonstrated
+- Build a stateful form widget that takes user input and handles validation errors
+- Allow route navigation betweeen different screens
+- Generate HTTP requests to post and get location metadata using this free API: https://www.metaweather.com/api/
+- Handle asynchronous operations using future and await logic when fetching data
 
 ## Getting Started
 
@@ -14,3 +20,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Inspiration
+This flutter app was inteded to recreate this website: http://doineedanumbrella.com/
+
