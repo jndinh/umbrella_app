@@ -8,18 +8,8 @@ The purpose of this app is to answer the question "Do I need an umbrella today?"
 - Generate HTTP requests to post and get location metadata using this free API: https://www.metaweather.com/api/
 - Handle asynchronous operations using future and await logic when fetching data
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Framework
+- Flutter SDK v1.22
 
 ## Inspiration
 This flutter app was inteded to recreate this website: http://doineedanumbrella.com/
